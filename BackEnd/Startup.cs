@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using AutoMapper;
 using BackEnd.Data;
 using BackEnd.Models;
 using Microsoft.AspNetCore.Builder;
@@ -51,11 +52,7 @@ namespace BackEnd
 
             services.AddControllers();
 
-            /*services.AddDbContext<IncidentContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("IncidentContext")));
-
-            services.AddDbContext<SourceContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("SourceContext")));*/
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
