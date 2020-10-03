@@ -12,48 +12,48 @@ namespace BackEnd.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class IncidentsController : ControllerBase
+    public class SourcesController : ControllerBase
     {
-        private readonly IncidentContext _context;
+        private readonly SourceContext _context;
 
-        public IncidentsController(IncidentContext context)
+        public SourcesController(SourceContext context)
         {
             _context = context;
         }
 
-        // GET: api/Incidents
+        // GET: api/Sources
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Incident>>> GetIncident()
+        public async Task<ActionResult<IEnumerable<Source>>> GetSource()
         {
-            return await _context.Incident.ToListAsync();
+            return await _context.Source.ToListAsync();
         }
 
-        // GET: api/Incidents/5
+        // GET: api/Sources/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Incident>> GetIncident(int id)
+        public async Task<ActionResult<Source>> GetSource(int id)
         {
-            var incident = await _context.Incident.FindAsync(id);
+            var source = await _context.Source.FindAsync(id);
 
-            if (incident == null)
+            if (source == null)
             {
                 return NotFound();
             }
 
-            return incident;
+            return source;
         }
 
-        // PUT: api/Incidents/5
+        // PUT: api/Sources/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutIncident(int id, Incident incident)
+        public async Task<IActionResult> PutSource(int id, Source source)
         {
-            if (id != incident.ID)
+            if (id != source.ID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(incident).State = EntityState.Modified;
+            _context.Entry(source).State = EntityState.Modified;
 
             try
             {
@@ -61,7 +61,7 @@ namespace BackEnd.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!IncidentExists(id))
+                if (!SourceExists(id))
                 {
                     return NotFound();
                 }
@@ -74,37 +74,37 @@ namespace BackEnd.Controllers
             return NoContent();
         }
 
-        // POST: api/Incidents
+        // POST: api/Sources
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Incident>> PostIncident(Incident incident)
+        public async Task<ActionResult<Source>> PostSource(Source source)
         {
-            _context.Incident.Add(incident);
+            _context.Source.Add(source);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetIncident", new { id = incident.ID }, incident);
+            return CreatedAtAction("GetSource", new { id = source.ID }, source);
         }
 
-        // DELETE: api/Incidents/5
+        // DELETE: api/Sources/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Incident>> DeleteIncident(int id)
+        public async Task<ActionResult<Source>> DeleteSource(int id)
         {
-            var incident = await _context.Incident.FindAsync(id);
-            if (incident == null)
+            var source = await _context.Source.FindAsync(id);
+            if (source == null)
             {
                 return NotFound();
             }
 
-            _context.Incident.Remove(incident);
+            _context.Source.Remove(source);
             await _context.SaveChangesAsync();
 
-            return incident;
+            return source;
         }
 
-        private bool IncidentExists(int id)
+        private bool SourceExists(int id)
         {
-            return _context.Incident.Any(e => e.ID == id);
+            return _context.Source.Any(e => e.ID == id);
         }
     }
 }

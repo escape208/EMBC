@@ -35,11 +35,27 @@ namespace BackEnd
                 options.UseSqlite("Data Source=embc.db");
             });
 
+            services.AddDbContext<IncidentContext>(options =>
+            {
+                options.UseSqlite("Data Source=embc.db");
+            });
+
+            services.AddDbContext<SourceContext>(options =>
+            {
+                options.UseSqlite("Data Source=embc.db");
+            });
+
             services.AddSwaggerGen(options =>
                 options.SwaggerDoc("v1", new OpenApiInfo { Title = "Elon Musk Body Count API", Version = "v1" })
             );
 
             services.AddControllers();
+
+            /*services.AddDbContext<IncidentContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("IncidentContext")));
+
+            services.AddDbContext<SourceContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("SourceContext")));*/
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

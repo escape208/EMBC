@@ -13,11 +13,12 @@ namespace BackEnd.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    City = table.Column<string>(maxLength: 200, nullable: false),
-                    State = table.Column<string>(maxLength: 50, nullable: false),
-                    Date = table.Column<DateTime>(nullable: false),
-                    Injuries = table.Column<int>(nullable: false),
-                    Deaths = table.Column<int>(nullable: false)
+                    City = table.Column<string>(maxLength: 200, nullable: true),
+                    State = table.Column<string>(maxLength: 50, nullable: true),
+                    Country = table.Column<string>(maxLength: 100, nullable: true),
+                    Date = table.Column<DateTime>(nullable: true),
+                    Injuries = table.Column<int>(nullable: true),
+                    Deaths = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -30,7 +31,9 @@ namespace BackEnd.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    SourceName = table.Column<string>(nullable: false),
                     URL = table.Column<string>(nullable: false),
+                    DateAdded = table.Column<DateTime>(nullable: false),
                     IncidentID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
