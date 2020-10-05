@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using AutoMapper;
 using BackEnd.Data;
 using BackEnd.Models;
 using Microsoft.AspNetCore.Builder;
@@ -31,19 +30,19 @@ namespace BackEnd
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
+/*            services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseSqlite("Data Source=embc.db");
-            });
+                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
+            });*/
 
             services.AddDbContext<IncidentContext>(options =>
             {
-                options.UseSqlite("Data Source=embc.db");
+                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
             });
 
             services.AddDbContext<SourceContext>(options =>
             {
-                options.UseSqlite("Data Source=embc.db");
+                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
             });
 
             services.AddSwaggerGen(options =>
@@ -51,8 +50,6 @@ namespace BackEnd
             );
 
             services.AddControllers();
-
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

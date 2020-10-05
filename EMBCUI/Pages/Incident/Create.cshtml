@@ -1,0 +1,59 @@
+﻿@page
+@model EMBCUI.Pages.Incident.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Incident</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Incident.City" class="control-label"></label>
+                <input asp-for="Incident.City" class="form-control" />
+                <span asp-validation-for="Incident.City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Incident.State" class="control-label"></label>
+                <input asp-for="Incident.State" class="form-control" />
+                <span asp-validation-for="Incident.State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Incident.Country" class="control-label"></label>
+                <input asp-for="Incident.Country" class="form-control" />
+                <span asp-validation-for="Incident.Country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Incident.Date" class="control-label"></label>
+                <input asp-for="Incident.Date" class="form-control" />
+                <span asp-validation-for="Incident.Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Incident.Injuries" class="control-label"></label>
+                <input asp-for="Incident.Injuries" class="form-control" />
+                <span asp-validation-for="Incident.Injuries" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Incident.Deaths" class="control-label"></label>
+                <input asp-for="Incident.Deaths" class="form-control" />
+                <span asp-validation-for="Incident.Deaths" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
